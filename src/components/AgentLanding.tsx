@@ -128,7 +128,7 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
                     <span>Ecosystem Matches</span>
                     <button onClick={() => setSearchQuery('')} className="p-1 hover:bg-primary/10 rounded-full"><X size={14} className="text-primary" /></button>
                   </div>
-                  <div className="space-y-1 max-h-[400px] overflow-y-auto no-scrollbar">
+                  <div className="space-y-1 max-h-[400px] overflow-y-auto">
                     {filteredCustomers.length > 0 ? (
                       filteredCustomers.map(customer => (
                         <div 
@@ -158,7 +158,7 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
           </div>
 
           {/* Quick Stat Ribbon */}
-          <div className="flex items-center gap-2 bg-white border border-slate-200 rounded-2xl p-2 px-4 shadow-sm">
+          <div className="flex items-center gap-2 bg-white border border-slate-200 rounded-2xl p-2 px-4 shadow-sm h-[60px]">
              <div className="flex items-center gap-4 px-3 last:border-0 h-full">
                 <div className="text-right">
                    <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Priority Alerts</p>
@@ -169,291 +169,180 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
                 </div>
              </div>
           </div>
+
+          {/* Logout Terminal Access */}
+          <button 
+            onClick={onLogout}
+            className="px-6 h-[60px] bg-slate-900 text-white rounded-2xl flex items-center gap-3 hover:bg-slate-800 transition-all group shadow-lg shadow-slate-900/10 shrink-0"
+          >
+            <div className="flex flex-col items-end">
+              <span className="text-[9px] font-black text-white/40 uppercase tracking-widest leading-none mb-1">Sarah Mitchell</span>
+              <span className="text-[11px] font-black group-hover:text-primary transition-colors leading-none">Exit Session</span>
+            </div>
+            <LogOut size={18} className="text-white group-hover:translate-x-1 transition-transform" />
+          </button>
         </div>
 
         {/* --- Main Bento Grid --- */}
-        
-        {/* Identity & Security Tile (Top Left) */}
-        <div className="lg:col-span-3">
-          <div className="bg-slate-800 rounded-[2rem] p-8 h-full text-white shadow-xl relative overflow-hidden group border border-white/5">
-            <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:scale-110 transition-transform">
-              <ShieldCheck size={100} />
-            </div>
-            
-            <div className="relative z-10 flex flex-col h-full">
-              <div className="mb-8">
-                <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary-dark rounded-2xl flex items-center justify-center text-white text-2xl font-black border border-white/20 shadow-lg">
-                  SM
-                </div>
-              </div>
-              
-              <div className="mb-auto">
-                <p className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] mb-1">Authenticated Terminal</p>
-                <h2 className="text-2xl font-black tracking-tighter mb-1">User: Sarah Mitchell</h2>
-                <p className="text-[12px] font-bold text-white/60 mb-6 border-l-2 border-primary pl-3">Corporate admin</p>
-                
-                <div className="mb-8 space-y-3">
-                  <p className="text-[11px] font-medium text-white/50 leading-relaxed capitalize">
-                    Responsible for oversight of enterprise-wide telecommunications infrastructure, digital fleet migration, and multi-tier account reconciliations for global strategic partners.
-                  </p>
-                  <div className="flex items-center gap-2 py-1 px-3 bg-white/5 rounded-lg w-fit">
-                    <span className="text-[9px] font-black text-white/40 uppercase tracking-widest">User ID</span>
-                    <span className="text-[11px] font-black text-primary-light">#992-TX</span>
+        <div className="lg:col-span-12 grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Portfolio Intelligence Dashboard - NOW FIRST BLOCK */}
+          <div className="lg:col-span-8">
+            <div className="bg-white rounded-[2rem] p-8 border border-slate-200 shadow-sm min-h-[600px] flex flex-col">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+                    <TrendingUp className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-[18px] font-black text-slate-900 tracking-tight uppercase">Portfolio Intelligence</h3>
+                    <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">Global Ecosystem Performance • Q2 2024</p>
                   </div>
                 </div>
-              </div>
-
-              <div className="mt-auto flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                   <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-                   <span className="text-[9px] font-black text-white/30 uppercase tracking-widest">System Active</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <button 
-                    onClick={onLogout}
-                    className="flex items-center gap-2 text-[9px] font-black text-white/40 hover:text-white uppercase tracking-widest transition-all p-2 hover:bg-white/5 rounded-lg"
-                  >
-                    <LogOut size={14} />
-                    <span>Logout</span>
-                  </button>
-                  <Settings size={16} className="text-white/20 hover:text-white cursor-pointer transition-colors" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Focal Work Area: Accounts Bento (Sub-grid) */}
-        <div className="lg:col-span-6 space-y-6">
-          {/* Account Hierarchy Module - Moved & Integrated */}
-          <div className="bg-white rounded-[2rem] p-8 border border-slate-200 shadow-sm h-full">
-            <div className="flex items-center gap-2 mb-8">
-              <Users className="w-5 h-5 text-primary" />
-              <h3 className="text-[13px] font-black text-slate-900 uppercase tracking-[0.1em]">Account Ecosystem</h3>
-            </div>
-            
-            <div className="max-w-2xl">
-              <div className="relative pl-8">
-                {/* Vertical Connector Line */}
-                <div className="absolute left-[15px] top-4 bottom-8 w-px bg-slate-200"></div>
-
-                {/* Primary Parent Node */}
-                <div className="relative mb-10">
-                  <div className="absolute left-[-23px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-primary border-4 border-white shadow-sm z-10"></div>
-                  <div 
-                    onClick={() => setCustomer('ACC-982341')}
-                    className="p-5 bg-primary text-white rounded-2xl cursor-pointer hover:bg-primary-dark transition-all shadow-md group flex items-center justify-between"
-                  >
-                    <div>
-                      <p className="text-[10px] font-bold text-white/50 uppercase tracking-widest mb-1">Corporate Parent</p>
-                      <p className="text-[17px] font-black">TechSolutions Global Ltd.</p>
-                    </div>
-                    <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white/10 transition-colors">
-                      <ArrowUpRight size={20} />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Sub-Account Children */}
-                <div className="space-y-4">
-                  {[
-                    { name: 'Chen Logistics & Supply', id: 'ACC-552109', industry: 'Logistics' },
-                    { name: 'Rodriguez Media Group', id: 'ACC-110293', industry: 'Digital' },
-                    { name: 'Nexus Venture Group', id: 'ACC-771100', industry: 'Capital' }
-                  ].map((child, i) => (
-                    <div key={i} className="relative group">
-                      <div className="absolute left-[-23px] top-1/2 -translate-y-1/2 w-4 h-px bg-slate-200 group-hover:bg-primary transition-colors"></div>
-                      <div 
-                        onClick={() => setCustomer(child.id)}
-                        className="ml-4 p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between hover:bg-white hover:border-primary/30 transition-all cursor-pointer group/item"
-                      >
-                        <div className="flex items-center gap-4">
-                           <div className="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-[14px] font-black text-primary shadow-sm">
-                             {child.name.charAt(0)}
-                           </div>
-                           <div>
-                             <p className="text-[9px] font-bold text-slate-500 uppercase tracking-tight">{child.industry} Unit</p>
-                             <p className="text-[14px] font-bold text-slate-900 group-hover/item:text-primary transition-colors">{child.name}</p>
-                           </div>
-                        </div>
-                        <ArrowRight size={16} className="text-slate-400 group-hover/item:text-primary transition-transform group-hover/item:translate-x-1" />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Global Monitoring & Rapid Actions (Right Column) */}
-        <div className="lg:col-span-3 space-y-6">
-          {/* NOC Monitoring Module */}
-          <div className="bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-sm group h-full">
-            <div className="p-6 h-full flex flex-col">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-[12px] font-black text-slate-900 uppercase tracking-widest">Ops Overview</h3>
-                <Activity size={16} className="text-emerald-500 animate-pulse" />
-              </div>
-              <div className="flex-1 bg-slate-50 rounded-xl mb-4 relative overflow-hidden min-h-[120px]">
-                <img src="https://picsum.photos/seed/heatmap/400/250?grayscale" alt="Map" className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:scale-105 transition-transform duration-[8s]" referrerPolicy="no-referrer" />
-                <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent flex items-end p-4">
-                  <span className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Zone: Global North</span>
-                </div>
-              </div>
-              <div className="space-y-4 mb-4">
-                <div className="flex justify-between items-center p-3 bg-slate-50 rounded-xl border border-slate-200">
-                  <span className="text-[10px] font-bold text-slate-500 uppercase">NOC Status</span>
-                  <span className="text-[11px] font-black text-emerald-600">OPERATIONAL</span>
-                </div>
-              </div>
-              <button className="w-full py-3 bg-primary text-white rounded-xl text-[11px] font-black uppercase tracking-widest hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all mt-auto">Launch Visualizer</button>
-            </div>
-          </div>
-        </div>
-
-        {/* Portfolio Intelligence Dashboard - FULL WIDTH */}
-        <div className="lg:col-span-12">
-          <div className="bg-white rounded-[2rem] p-8 lg:p-10 border border-slate-200 shadow-sm">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
-                  <TrendingUp className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-[18px] font-black text-slate-900 tracking-tight uppercase">Portfolio Intelligence</h3>
-                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">Global Ecosystem Performance • Q2 2024</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-6">
                 <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full border border-slate-200">
                   <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
                   <span className="text-[10px] font-black text-slate-900 uppercase tracking-widest">Real-time Stream Active</span>
                 </div>
               </div>
-            </div>
 
-            <div className="grid grid-cols-1 xl:grid-cols-12 gap-10">
-              {/* Left Column: Account-wise Service Inventory */}
-              <div className="xl:col-span-8">
-                <div className="flex items-center justify-between mb-6">
-                  <p className="text-[12px] font-black text-slate-900 uppercase tracking-[0.2em]">Consolidated Fleet Inventory</p>
-                </div>
-
-                <div className="space-y-4">
-                  {[
-                    { name: 'TechSolutions Global Ltd.', fixed: 142, mobile: 324, fiber: 92, status: 'Healthy' },
-                    { name: 'Chen Logistics & Supply', fixed: 84, mobile: 182, fiber: 42, status: 'Critical' },
-                    { name: 'Rodriguez Media Group', fixed: 112, mobile: 214, fiber: 64, status: 'Healthy' },
-                    { name: 'Nexus Venture Group', fixed: 124, mobile: 188, fiber: 132, status: 'Healthy' }
-                  ].map((account, i) => (
-                    <div key={i} className="group flex flex-col md:flex-row items-start md:items-center justify-between p-5 bg-slate-50/50 border border-slate-200 rounded-2xl hover:bg-white hover:shadow-xl transition-all hover:border-primary/20">
-                      <div className="flex-1 mb-4 md:mb-0">
-                        <p className="text-[15px] font-black text-slate-900 group-hover:text-primary transition-colors">{account.name}</p>
-                        <div className="flex items-center gap-3 mt-1">
-                          <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">ID: ACC-0{i}X-24</p>
-                          <span className="text-slate-300">•</span>
-                          <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Primary Node: EMEA-4</p>
-                        </div>
+              <div className="space-y-4 overflow-y-auto flex-1">
+                {[
+                  { name: 'TechSolutions Global Ltd.', id: 'ACC-982341', fixed: 12, mobile: 20, fiber: 10, status: 'Healthy' },
+                  { name: 'Chen Logistics & Supply', id: 'ACC-552109', fixed: 14, mobile: 110, fiber: 42, status: 'Healthy' },
+                  { name: 'Rodriguez Media Group', id: 'ACC-110293', fixed: 10, mobile: 200, fiber: 64, status: 'Healthy' },
+                  { name: 'Nexus Venture Group', id: 'ACC-771100', fixed: 22, mobile: 40, fiber: 132, status: 'Healthy' }
+                ].map((account, i) => (
+                  <div 
+                    key={i} 
+                    onClick={() => setCustomer(account.id)}
+                    className="group flex flex-col md:flex-row items-start md:items-center justify-between p-5 bg-slate-50/50 border border-slate-200 rounded-2xl hover:bg-white hover:shadow-xl transition-all hover:border-primary/20 cursor-pointer"
+                  >
+                    <div className="flex-1 mb-4 md:mb-0">
+                      <p className="text-[15px] font-black text-slate-900 group-hover:text-primary transition-colors">{account.name}</p>
+                      <div className="flex items-center gap-3 mt-1">
+                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">ID: {account.id}</p>
+                        <span className="text-slate-300">•</span>
+                        <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Primary Node: EMEA-4</p>
                       </div>
-                      <div className="flex items-center flex-wrap gap-x-12 gap-y-4 w-full md:w-auto md:text-right">
+                    </div>
+                    <div className="flex items-center flex-wrap gap-x-8 gap-y-4 w-full md:w-auto md:text-right">
+                      <div className="min-w-[60px]">
+                        <p className="text-[10px] font-bold text-slate-500 uppercase mb-1">Fixed</p>
+                        <p className="text-[16px] font-black text-slate-900">{account.fixed}</p>
+                      </div>
+                      <div className="min-w-[60px]">
+                        <p className="text-[10px] font-bold text-slate-500 uppercase mb-1">Mobile</p>
+                        <p className="text-[16px] font-black text-slate-900">{account.mobile}</p>
+                      </div>
+                      <div className="min-w-[60px]">
+                        <p className="text-[10px] font-bold text-slate-500 uppercase mb-1">Fiber</p>
+                        <p className="text-[16px] font-black text-slate-900">{account.fiber}</p>
+                      </div>
+                      <div className="md:w-24 text-right">
+                        <span className={cn(
+                          "text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-widest inline-block border",
+                          account.status === 'Healthy' ? "bg-emerald-50 text-emerald-600 border-emerald-100" : "bg-red-50 text-red-600 border-red-100"
+                        )}>{account.status}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+                <div className="p-5 bg-slate-900 text-white rounded-2xl shadow-lg border border-white/5 group hover:bg-slate-800 transition-all">
+                  <p className="text-[9px] font-bold text-white/40 uppercase mb-1 tracking-widest">Open Orders</p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-2xl font-black">42</p>
+                    <ArrowUpRight size={14} className="text-primary-light" />
+                  </div>
+                </div>
+                <div className="p-5 bg-white border border-slate-200 rounded-2xl shadow-sm hover:shadow-md transition-all group">
+                  <p className="text-[9px] font-bold text-red-600 uppercase mb-1 tracking-widest">Active Issues</p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-2xl font-black text-slate-900">18</p>
+                    <AlertTriangle size={14} className="text-red-600" />
+                  </div>
+                </div>
+                <div className="p-5 bg-slate-50 border border-slate-200 rounded-2xl">
+                  <p className="text-[9px] font-bold text-slate-500 uppercase mb-1 tracking-widest">Plan SLA</p>
+                  <p className="text-2xl font-black text-slate-900">99.8%</p>
+                </div>
+                <div className="p-5 bg-slate-50 border border-slate-200 rounded-2xl">
+                  <p className="text-[9px] font-bold text-slate-500 uppercase mb-1 tracking-widest">Portfolio MRR</p>
+                  <p className="text-2xl font-black text-slate-900">£142.5k</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Account Ecosystem - NOW RIGHT BLOCK */}
+          <div className="lg:col-span-4">
+            <div className="bg-white rounded-[2rem] p-8 border border-slate-200 shadow-sm h-full flex flex-col max-h-[600px]">
+              <div className="flex items-center gap-2 mb-8">
+                <Users className="w-5 h-5 text-primary" />
+                <h3 className="text-[13px] font-black text-slate-900 uppercase tracking-[0.1em]">Account Ecosystem</h3>
+              </div>
+              
+              <div className="flex-1 overflow-auto bg-slate-50/50 rounded-2xl p-6 border border-slate-100 pr-2">
+                <div className="min-w-[400px] pr-4"> {/* Set min-width to trigger horizontal scroll if needed */}
+                  <div className="relative pl-8">
+                    {/* Vertical Connector Line */}
+                    <div className="absolute left-[15px] top-4 bottom-8 w-px bg-slate-200"></div>
+
+                    {/* Primary Parent Node */}
+                    <div className="relative mb-10">
+                      <div className="absolute left-[-23px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-primary border-4 border-white shadow-sm z-10"></div>
+                      <div 
+                        onClick={() => setCustomer('ACC-982341')}
+                        className="p-5 bg-primary text-white rounded-2xl cursor-pointer hover:bg-primary-dark transition-all shadow-md group flex items-center justify-between"
+                      >
                         <div>
-                          <p className="text-[11px] font-bold text-slate-500 uppercase mb-1">Fixed</p>
-                          <p className="text-[18px] font-black text-slate-900">{account.fixed}</p>
+                          <p className="text-[10px] font-bold text-white/50 uppercase tracking-widest mb-1">Corporate Parent</p>
+                          <p className="text-[15px] font-black leading-tight">TechSolutions Global Ltd.</p>
                         </div>
-                        <div>
-                          <p className="text-[11px] font-bold text-slate-500 uppercase mb-1">Mobile</p>
-                          <p className="text-[18px] font-black text-slate-900">{account.mobile}</p>
-                        </div>
-                        <div>
-                          <p className="text-[11px] font-bold text-slate-500 uppercase mb-1">Fiber</p>
-                          <p className="text-[18px] font-black text-slate-900">{account.fiber}</p>
-                        </div>
-                        <div className="md:w-24 text-right">
-                          <p className="text-[10px] font-bold text-slate-500 uppercase mb-2">Connectivity</p>
-                          <span className={cn(
-                            "text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest inline-block border",
-                            account.status === 'Healthy' ? "bg-emerald-50 text-emerald-600 border-emerald-100" : "bg-red-50 text-red-600 border-red-100"
-                          )}>{account.status}</span>
+                        <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white/10 transition-colors shrink-0 ml-4">
+                          <ArrowUpRight size={16} />
                         </div>
                       </div>
                     </div>
-                  ))}
-                </div>
-              </div>
 
-              {/* Right Column: Strategic KPIs */}
-              <div className="xl:col-span-4 flex flex-col pt-2 xl:border-l border-slate-200 xl:pl-10">
-                <div className="space-y-8">
-                   <div className="grid grid-cols-2 gap-6">
-                      <div className="p-6 bg-slate-900 text-white rounded-3xl shadow-xl hover:scale-[1.02] transition-transform cursor-pointer">
-                        <p className="text-[11px] font-bold text-white/40 uppercase mb-2 tracking-widest">Open Orders</p>
-                        <div className="flex items-end justify-between">
-                           <p className="text-[32px] font-black leading-none">42</p>
-                           <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center">
-                             <ArrowUpRight size={18} className="text-primary-light" />
-                           </div>
-                        </div>
-                      </div>
-                      <div className="p-6 bg-white border border-slate-200 rounded-3xl shadow-sm hover:scale-[1.02] transition-transform cursor-pointer group">
-                        <p className="text-[11px] font-bold text-slate-500 uppercase mb-2 tracking-widest">Active Issues</p>
-                        <div className="flex items-end justify-between">
-                           <p className="text-[32px] font-black leading-none text-red-600">18</p>
-                           <div className="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-colors">
-                             <AlertTriangle size={18} />
-                           </div>
-                        </div>
-                      </div>
-                   </div>
-
-                   <div className="p-8 bg-slate-50 rounded-3xl border border-slate-200">
-                      <div className="flex justify-between items-center mb-6">
-                         <div>
-                           <p className="text-[11px] font-black text-slate-500 uppercase tracking-widest mb-1">SLA Compliance</p>
-                           <p className="text-[28px] font-black text-slate-900 tracking-tighter">99.82%</p>
-                         </div>
-                         <div className="w-14 h-14 rounded-full border-4 border-emerald-500/20 border-t-emerald-500 flex items-center justify-center">
-                            <Activity size={24} className="text-emerald-500" />
-                         </div>
-                      </div>
-                      <div className="h-2.5 w-full bg-white rounded-full overflow-hidden mb-4 border border-slate-200">
-                        <motion.div initial={{ width: 0 }} animate={{ width: '99.8%' }} className="h-full bg-emerald-500 rounded-full" />
-                      </div>
-                      <div className="flex justify-between items-center">
-                        <p className="text-[10px] font-bold text-slate-500 uppercase">Target Threshold: 99.5%</p>
-                        <span className="text-[10px] font-black text-emerald-600 uppercase tracking-widest px-2 py-0.5 bg-emerald-100 rounded">EXCEEDING</span>
-                      </div>
-                   </div>
-
-                   <div className="space-y-4">
-                      <p className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] mb-4">Financial Snapshots</p>
-                      
-                      <div className="group relative p-6 bg-white border border-slate-200 rounded-3xl hover:border-primary/40 transition-all overflow-hidden">
-                        <div className="absolute right-[-10px] bottom-[-10px] opacity-5 text-primary rotate-12 transition-transform group-hover:scale-110">
-                          <CreditCard size={80} />
-                        </div>
-                        <div className="relative z-10 flex justify-between items-center">
-                          <div>
-                            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Portfolio MRR</p>
-                            <p className="text-[24px] font-black text-slate-900">£142.5k</p>
-                          </div>
-                          <div className="text-right">
-                            <p className="text-[10px] font-bold text-emerald-600 uppercase mb-1">Net Growth</p>
-                            <div className="flex items-center gap-1 text-emerald-600 font-black">
-                              <TrendingUp size={14} />
-                              <span>+12.4%</span>
+                    {/* Sub-Account Children */}
+                    <div className="space-y-4">
+                      {[
+                        { name: 'Chen Logistics & Supply', id: 'ACC-552109', industry: 'Logistics' },
+                        { name: 'Rodriguez Media Group', id: 'ACC-110293', industry: 'Digital' },
+                        { name: 'Nexus Venture Group', id: 'ACC-771100', industry: 'Capital' },
+                        { name: 'Global Logistics Unit B', id: 'ACC-552110', industry: 'Logistics' },
+                        { name: 'Enterprise Cloud Dev', id: 'ACC-223344', industry: 'SaaS' }
+                      ].map((child, i) => (
+                        <div key={i} className="relative group">
+                          <div className="absolute left-[-23px] top-1/2 -translate-y-1/2 w-4 h-px bg-slate-200 group-hover:bg-primary transition-colors"></div>
+                          <div 
+                            onClick={() => setCustomer(child.id)}
+                            className="ml-4 p-4 bg-white border border-slate-200 rounded-xl flex items-center justify-between hover:border-primary/30 transition-all cursor-pointer group/item shadow-sm"
+                          >
+                            <div className="flex items-center gap-3">
+                               <div className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center text-[12px] font-black text-primary shadow-sm">
+                                 {child.name.charAt(0)}
+                               </div>
+                               <div>
+                                 <p className="text-[8px] font-bold text-slate-500 uppercase tracking-tight">{child.industry} Unit</p>
+                                 <p className="text-[12px] font-bold text-slate-900 group-hover/item:text-primary transition-colors leading-tight">{child.name}</p>
+                               </div>
                             </div>
+                            <ArrowRight size={14} className="text-slate-400 group-hover/item:text-primary transition-transform group-hover/item:translate-x-1 shrink-0 ml-2" />
                           </div>
                         </div>
-                      </div>
-                   </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Shortcut Panel (Across full width if needed or split) */}
+        {/* Bottom Shortcut Panel */}
         <div className="lg:col-span-12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
           <div className="bg-white rounded-2xl p-6 border border-slate-200 flex items-center justify-between group cursor-pointer hover:border-primary/40 hover:-translate-y-1 transition-all">
             <div className="flex items-center gap-4">
