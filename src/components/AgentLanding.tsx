@@ -97,7 +97,7 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
   const frequentAccounts = useMemo(() => allCustomers.slice(0, 4), [allCustomers]);
 
   return (
-    <div className="min-h-screen bg-[#f8f9fa] p-4 lg:p-8 overflow-x-hidden font-sans">
+    <div className="min-h-screen bg-slate-50 p-4 lg:p-8 overflow-x-hidden font-sans">
       <div className="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
         
         {/* --- Top Command & Stats Bar --- */}
@@ -105,14 +105,14 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
           {/* Integrated Search Command Bar */}
           <div className="flex-1 relative group">
             <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-              <Command className="w-5 h-5 text-text-muted group-focus-within:text-primary transition-colors" />
+              <Command className="w-5 h-5 text-slate-500 group-focus-within:text-primary transition-colors" />
             </div>
             <input 
               type="text" 
               placeholder="Execute Account Search (Company, Industry, ID...)"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white border-2 border-border-main rounded-2xl py-4 pl-12 pr-4 text-[15px] font-bold outline-none shadow-sm focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all text-text-main placeholder:text-text-muted/40"
+              className="w-full bg-white border-2 border-slate-200 rounded-2xl py-4 pl-12 pr-4 text-[15px] font-bold outline-none shadow-sm focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all text-slate-900 placeholder:text-slate-400"
             />
             
             {/* Command Results Popover - Integrated */}
@@ -122,9 +122,9 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
                   initial={{ opacity: 0, y: 10, scale: 0.98 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.98 }}
-                  className="absolute top-full left-0 right-0 mt-3 bg-white border border-border-main rounded-2xl shadow-2xl overflow-hidden z-[100] p-1.5"
+                  className="absolute top-full left-0 right-0 mt-3 bg-white border border-slate-200 shadow-2xl rounded-2xl overflow-hidden z-[100] p-1.5"
                 >
-                  <div className="p-2.5 text-[10px] font-black text-text-muted uppercase tracking-[0.15em] bg-bg-app rounded-lg mb-1.5 flex justify-between items-center">
+                  <div className="p-2.5 text-[10px] font-black text-slate-500 uppercase tracking-[0.15em] bg-slate-50 rounded-lg mb-1.5 flex justify-between items-center">
                     <span>Ecosystem Matches</span>
                     <button onClick={() => setSearchQuery('')} className="p-1 hover:bg-primary/10 rounded-full"><X size={14} className="text-primary" /></button>
                   </div>
@@ -137,19 +137,19 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
                           className="flex items-center justify-between p-3.5 hover:bg-primary-light rounded-xl transition-all cursor-pointer group"
                         >
                           <div className="flex items-center gap-4">
-                            <div className="w-10 h-10 bg-white border border-border-main rounded-xl flex items-center justify-center text-primary font-black text-lg transition-all shadow-sm group-hover:scale-105 group-hover:border-primary/20">
+                            <div className="w-10 h-10 bg-white border border-slate-200 rounded-xl flex items-center justify-center text-primary font-black text-lg transition-all shadow-sm group-hover:scale-105 group-hover:border-primary/20">
                               {customer.companyName.charAt(0)}
                             </div>
                             <div>
-                              <h4 className="text-[14px] font-black text-text-main group-hover:text-primary">{customer.companyName}</h4>
-                              <p className="text-[10px] font-bold text-text-muted uppercase tracking-tight">{customer.industry} • {customer.id}</p>
+                              <h4 className="text-[14px] font-black text-slate-900 group-hover:text-primary">{customer.companyName}</h4>
+                              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tight">{customer.industry} • {customer.id}</p>
                             </div>
                           </div>
-                          <ChevronRight size={18} className="text-text-muted group-hover:text-primary transition-transform group-hover:translate-x-1" />
+                          <ChevronRight size={18} className="text-slate-400 group-hover:text-primary transition-transform group-hover:translate-x-1" />
                         </div>
                       ))
                     ) : (
-                      <div className="py-10 text-center text-text-muted font-bold text-[13px]">No records found for that query.</div>
+                      <div className="py-10 text-center text-slate-500 font-bold text-[13px]">No records found for that query.</div>
                     )}
                   </div>
                 </motion.div>
@@ -158,11 +158,11 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
           </div>
 
           {/* Quick Stat Ribbon */}
-          <div className="flex items-center gap-2 bg-white border border-border-main rounded-2xl p-2 px-4 shadow-sm">
+          <div className="flex items-center gap-2 bg-white border border-slate-200 rounded-2xl p-2 px-4 shadow-sm">
              <div className="flex items-center gap-4 px-3 last:border-0 h-full">
                 <div className="text-right">
-                   <p className="text-[9px] font-black text-text-muted uppercase tracking-widest">Priority Alerts</p>
-                   <p className="text-[14px] font-black text-red-600 leading-tight leading-none mt-0.5">24</p>
+                   <p className="text-[9px] font-black text-slate-500 uppercase tracking-widest">Priority Alerts</p>
+                   <p className="text-[14px] font-black text-red-600 leading-none mt-0.5">24</p>
                 </div>
                 <div onClick={() => setShowAlerts(true)} className="p-1.5 bg-red-50 rounded-lg cursor-pointer hover:bg-red-100 transition-colors">
                   <Bell size={16} className="text-red-600" />
@@ -175,7 +175,7 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
         
         {/* Identity & Security Tile (Top Left) */}
         <div className="lg:col-span-3">
-          <div className="bg-[#1a1a1a] rounded-[2rem] p-8 h-full text-white shadow-xl relative overflow-hidden group border border-white/5">
+          <div className="bg-slate-900 rounded-[2rem] p-8 h-full text-white shadow-xl relative overflow-hidden group border border-white/5">
             <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:scale-110 transition-transform">
               <ShieldCheck size={100} />
             </div>
@@ -226,16 +226,16 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
         {/* Focal Work Area: Accounts Bento (Sub-grid) */}
         <div className="lg:col-span-6 space-y-6">
           {/* Account Hierarchy Module - Moved & Integrated */}
-          <div className="bg-white rounded-[2rem] p-8 border border-border-main shadow-sm h-full">
+          <div className="bg-white rounded-[2rem] p-8 border border-slate-200 shadow-sm h-full">
             <div className="flex items-center gap-2 mb-8">
               <Users className="w-5 h-5 text-primary" />
-              <h3 className="text-[13px] font-black text-text-main uppercase tracking-[0.1em]">Account Ecosystem</h3>
+              <h3 className="text-[13px] font-black text-slate-900 uppercase tracking-[0.1em]">Account Ecosystem</h3>
             </div>
             
             <div className="max-w-2xl">
               <div className="relative pl-8">
                 {/* Vertical Connector Line */}
-                <div className="absolute left-[15px] top-4 bottom-8 w-px bg-border-main"></div>
+                <div className="absolute left-[15px] top-4 bottom-8 w-px bg-slate-200"></div>
 
                 {/* Primary Parent Node */}
                 <div className="relative mb-10">
@@ -262,21 +262,21 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
                     { name: 'Nexus Venture Group', id: 'ACC-771100', industry: 'Capital' }
                   ].map((child, i) => (
                     <div key={i} className="relative group">
-                      <div className="absolute left-[-23px] top-1/2 -translate-y-1/2 w-4 h-px bg-border-main group-hover:bg-primary transition-colors"></div>
+                      <div className="absolute left-[-23px] top-1/2 -translate-y-1/2 w-4 h-px bg-slate-200 group-hover:bg-primary transition-colors"></div>
                       <div 
                         onClick={() => setCustomer(child.id)}
-                        className="ml-4 p-4 bg-[#f8f9fa] border border-border-main rounded-xl flex items-center justify-between hover:bg-white hover:border-primary/30 transition-all cursor-pointer group/item"
+                        className="ml-4 p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between hover:bg-white hover:border-primary/30 transition-all cursor-pointer group/item"
                       >
                         <div className="flex items-center gap-4">
-                           <div className="w-10 h-10 rounded-lg bg-white border border-border-main flex items-center justify-center text-[14px] font-black text-primary shadow-sm">
+                           <div className="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-[14px] font-black text-primary shadow-sm">
                              {child.name.charAt(0)}
                            </div>
                            <div>
-                             <p className="text-[9px] font-bold text-text-muted uppercase tracking-tight">{child.industry} Unit</p>
-                             <p className="text-[14px] font-bold text-text-main group-hover/item:text-primary transition-colors">{child.name}</p>
+                             <p className="text-[9px] font-bold text-slate-500 uppercase tracking-tight">{child.industry} Unit</p>
+                             <p className="text-[14px] font-bold text-slate-900 group-hover/item:text-primary transition-colors">{child.name}</p>
                            </div>
                         </div>
-                        <ArrowRight size={16} className="text-text-muted group-hover/item:text-primary transition-transform group-hover/item:translate-x-1" />
+                        <ArrowRight size={16} className="text-slate-400 group-hover/item:text-primary transition-transform group-hover/item:translate-x-1" />
                       </div>
                     </div>
                   ))}
@@ -289,21 +289,21 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
         {/* Global Monitoring & Rapid Actions (Right Column) */}
         <div className="lg:col-span-3 space-y-6">
           {/* NOC Monitoring Module */}
-          <div className="bg-white rounded-[2rem] border border-border-main overflow-hidden shadow-sm group h-full">
+          <div className="bg-white rounded-[2rem] border border-slate-200 overflow-hidden shadow-sm group h-full">
             <div className="p-6 h-full flex flex-col">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-[12px] font-black text-text-main uppercase tracking-widest">Ops Overview</h3>
+                <h3 className="text-[12px] font-black text-slate-900 uppercase tracking-widest">Ops Overview</h3>
                 <Activity size={16} className="text-emerald-500 animate-pulse" />
               </div>
-              <div className="flex-1 bg-bg-app rounded-xl mb-4 relative overflow-hidden min-h-[120px]">
+              <div className="flex-1 bg-slate-50 rounded-xl mb-4 relative overflow-hidden min-h-[120px]">
                 <img src="https://picsum.photos/seed/heatmap/400/250?grayscale" alt="Map" className="absolute inset-0 w-full h-full object-cover opacity-10 group-hover:scale-105 transition-transform duration-[8s]" referrerPolicy="no-referrer" />
                 <div className="absolute inset-0 bg-gradient-to-t from-white/80 to-transparent flex items-end p-4">
                   <span className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Zone: Global North</span>
                 </div>
               </div>
               <div className="space-y-4 mb-4">
-                <div className="flex justify-between items-center p-3 bg-bg-app rounded-xl border border-border-main">
-                  <span className="text-[10px] font-bold text-text-muted uppercase">NOC Status</span>
+                <div className="flex justify-between items-center p-3 bg-slate-50 rounded-xl border border-slate-200">
+                  <span className="text-[10px] font-bold text-slate-500 uppercase">NOC Status</span>
                   <span className="text-[11px] font-black text-emerald-600">OPERATIONAL</span>
                 </div>
               </div>
@@ -314,21 +314,21 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
 
         {/* Portfolio Intelligence Dashboard - FULL WIDTH */}
         <div className="lg:col-span-12">
-          <div className="bg-white rounded-[2rem] p-8 lg:p-10 border border-border-main shadow-sm">
+          <div className="bg-white rounded-[2rem] p-8 lg:p-10 border border-slate-200 shadow-sm">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
                   <TrendingUp className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-[18px] font-black text-text-main tracking-tight uppercase">Portfolio Intelligence</h3>
-                  <p className="text-[11px] font-bold text-text-muted uppercase tracking-widest">Global Ecosystem Performance • Q2 2024</p>
+                  <h3 className="text-[18px] font-black text-slate-900 tracking-tight uppercase">Portfolio Intelligence</h3>
+                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">Global Ecosystem Performance • Q2 2024</p>
                 </div>
               </div>
               <div className="flex items-center gap-6">
-                <div className="flex items-center gap-2 px-4 py-2 bg-bg-app rounded-full border border-border-main">
+                <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full border border-slate-200">
                   <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
-                  <span className="text-[10px] font-black text-text-main uppercase tracking-widest">Real-time Stream Active</span>
+                  <span className="text-[10px] font-black text-slate-900 uppercase tracking-widest">Real-time Stream Active</span>
                 </div>
               </div>
             </div>
@@ -337,7 +337,7 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
               {/* Left Column: Account-wise Service Inventory */}
               <div className="xl:col-span-8">
                 <div className="flex items-center justify-between mb-6">
-                  <p className="text-[12px] font-black text-text-main uppercase tracking-[0.2em]">Consolidated Fleet Inventory</p>
+                  <p className="text-[12px] font-black text-slate-900 uppercase tracking-[0.2em]">Consolidated Fleet Inventory</p>
                 </div>
 
                 <div className="space-y-4">
@@ -347,30 +347,30 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
                     { name: 'Rodriguez Media Group', fixed: 112, mobile: 214, fiber: 64, status: 'Healthy' },
                     { name: 'Nexus Venture Group', fixed: 124, mobile: 188, fiber: 132, status: 'Healthy' }
                   ].map((account, i) => (
-                    <div key={i} className="group flex flex-col md:flex-row items-start md:items-center justify-between p-5 bg-[#fcfdfe] border border-border-main rounded-2xl hover:bg-white hover:shadow-xl transition-all hover:border-primary/20">
+                    <div key={i} className="group flex flex-col md:flex-row items-start md:items-center justify-between p-5 bg-slate-50/50 border border-slate-200 rounded-2xl hover:bg-white hover:shadow-xl transition-all hover:border-primary/20">
                       <div className="flex-1 mb-4 md:mb-0">
-                        <p className="text-[15px] font-black text-text-main group-hover:text-primary transition-colors">{account.name}</p>
+                        <p className="text-[15px] font-black text-slate-900 group-hover:text-primary transition-colors">{account.name}</p>
                         <div className="flex items-center gap-3 mt-1">
-                          <p className="text-[10px] font-bold text-text-muted uppercase tracking-tighter">ID: ACC-0{i}X-24</p>
-                          <span className="text-text-muted/30">•</span>
-                          <p className="text-[10px] font-bold text-text-muted uppercase tracking-tighter">Primary Node: EMEA-4</p>
+                          <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">ID: ACC-0{i}X-24</p>
+                          <span className="text-slate-300">•</span>
+                          <p className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Primary Node: EMEA-4</p>
                         </div>
                       </div>
                       <div className="flex items-center flex-wrap gap-x-12 gap-y-4 w-full md:w-auto md:text-right">
                         <div>
-                          <p className="text-[11px] font-bold text-text-muted uppercase mb-1">Fixed</p>
-                          <p className="text-[18px] font-black text-text-main">{account.fixed}</p>
+                          <p className="text-[11px] font-bold text-slate-500 uppercase mb-1">Fixed</p>
+                          <p className="text-[18px] font-black text-slate-900">{account.fixed}</p>
                         </div>
                         <div>
-                          <p className="text-[11px] font-bold text-text-muted uppercase mb-1">Mobile</p>
-                          <p className="text-[18px] font-black text-text-main">{account.mobile}</p>
+                          <p className="text-[11px] font-bold text-slate-500 uppercase mb-1">Mobile</p>
+                          <p className="text-[18px] font-black text-slate-900">{account.mobile}</p>
                         </div>
                         <div>
-                          <p className="text-[11px] font-bold text-text-muted uppercase mb-1">Fiber</p>
-                          <p className="text-[18px] font-black text-text-main">{account.fiber}</p>
+                          <p className="text-[11px] font-bold text-slate-500 uppercase mb-1">Fiber</p>
+                          <p className="text-[18px] font-black text-slate-900">{account.fiber}</p>
                         </div>
                         <div className="md:w-24 text-right">
-                          <p className="text-[10px] font-bold text-text-muted uppercase mb-2">Connectivity</p>
+                          <p className="text-[10px] font-bold text-slate-500 uppercase mb-2">Connectivity</p>
                           <span className={cn(
                             "text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-widest inline-block border",
                             account.status === 'Healthy' ? "bg-emerald-50 text-emerald-600 border-emerald-100" : "bg-red-50 text-red-600 border-red-100"
@@ -383,10 +383,10 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
               </div>
 
               {/* Right Column: Strategic KPIs */}
-              <div className="xl:col-span-4 flex flex-col pt-2 xl:border-l border-border-main xl:pl-10">
+              <div className="xl:col-span-4 flex flex-col pt-2 xl:border-l border-slate-200 xl:pl-10">
                 <div className="space-y-8">
                    <div className="grid grid-cols-2 gap-6">
-                      <div className="p-6 bg-[#1a1a1a] text-white rounded-3xl shadow-xl hover:scale-[1.02] transition-transform cursor-pointer">
+                      <div className="p-6 bg-slate-900 text-white rounded-3xl shadow-xl hover:scale-[1.02] transition-transform cursor-pointer">
                         <p className="text-[11px] font-bold text-white/40 uppercase mb-2 tracking-widest">Open Orders</p>
                         <div className="flex items-end justify-between">
                            <p className="text-[32px] font-black leading-none">42</p>
@@ -395,8 +395,8 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
                            </div>
                         </div>
                       </div>
-                      <div className="p-6 bg-white border border-border-main rounded-3xl shadow-sm hover:scale-[1.02] transition-transform cursor-pointer group">
-                        <p className="text-[11px] font-bold text-text-muted uppercase mb-2 tracking-widest">Active Issues</p>
+                      <div className="p-6 bg-white border border-slate-200 rounded-3xl shadow-sm hover:scale-[1.02] transition-transform cursor-pointer group">
+                        <p className="text-[11px] font-bold text-slate-500 uppercase mb-2 tracking-widest">Active Issues</p>
                         <div className="flex items-end justify-between">
                            <p className="text-[32px] font-black leading-none text-red-600">18</p>
                            <div className="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-colors">
@@ -406,36 +406,36 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
                       </div>
                    </div>
 
-                   <div className="p-8 bg-[#f8f9fa] rounded-3xl border border-border-main">
+                   <div className="p-8 bg-slate-50 rounded-3xl border border-slate-200">
                       <div className="flex justify-between items-center mb-6">
                          <div>
-                           <p className="text-[11px] font-black text-text-muted uppercase tracking-widest mb-1">SLA Compliance</p>
-                           <p className="text-[28px] font-black text-text-main tracking-tighter">99.82%</p>
+                           <p className="text-[11px] font-black text-slate-500 uppercase tracking-widest mb-1">SLA Compliance</p>
+                           <p className="text-[28px] font-black text-slate-900 tracking-tighter">99.82%</p>
                          </div>
                          <div className="w-14 h-14 rounded-full border-4 border-emerald-500/20 border-t-emerald-500 flex items-center justify-center">
                             <Activity size={24} className="text-emerald-500" />
                          </div>
                       </div>
-                      <div className="h-2.5 w-full bg-white rounded-full overflow-hidden mb-4 border border-border-main">
+                      <div className="h-2.5 w-full bg-white rounded-full overflow-hidden mb-4 border border-slate-200">
                         <motion.div initial={{ width: 0 }} animate={{ width: '99.8%' }} className="h-full bg-emerald-500 rounded-full" />
                       </div>
                       <div className="flex justify-between items-center">
-                        <p className="text-[10px] font-bold text-text-muted uppercase">Target Threshold: 99.5%</p>
+                        <p className="text-[10px] font-bold text-slate-500 uppercase">Target Threshold: 99.5%</p>
                         <span className="text-[10px] font-black text-emerald-600 uppercase tracking-widest px-2 py-0.5 bg-emerald-100 rounded">EXCEEDING</span>
                       </div>
                    </div>
 
                    <div className="space-y-4">
-                      <p className="text-[11px] font-black text-text-muted uppercase tracking-[0.2em] mb-4">Financial Snapshots</p>
+                      <p className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em] mb-4">Financial Snapshots</p>
                       
-                      <div className="group relative p-6 bg-white border border-border-main rounded-3xl hover:border-primary/40 transition-all overflow-hidden">
+                      <div className="group relative p-6 bg-white border border-slate-200 rounded-3xl hover:border-primary/40 transition-all overflow-hidden">
                         <div className="absolute right-[-10px] bottom-[-10px] opacity-5 text-primary rotate-12 transition-transform group-hover:scale-110">
                           <CreditCard size={80} />
                         </div>
                         <div className="relative z-10 flex justify-between items-center">
                           <div>
-                            <p className="text-[10px] font-bold text-text-muted uppercase tracking-widest mb-1">Portfolio MRR</p>
-                            <p className="text-[24px] font-black text-text-main">£142.5k</p>
+                            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Portfolio MRR</p>
+                            <p className="text-[24px] font-black text-slate-900">£142.5k</p>
                           </div>
                           <div className="text-right">
                             <p className="text-[10px] font-bold text-emerald-600 uppercase mb-1">Net Growth</p>
@@ -455,43 +455,43 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
 
         {/* Bottom Shortcut Panel (Across full width if needed or split) */}
         <div className="lg:col-span-12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <div className="bg-white rounded-2xl p-6 border border-border-main flex items-center justify-between group cursor-pointer hover:border-primary/40 hover:-translate-y-1 transition-all">
+          <div className="bg-white rounded-2xl p-6 border border-slate-200 flex items-center justify-between group cursor-pointer hover:border-primary/40 hover:-translate-y-1 transition-all">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-primary/5 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-sm">
                  <ArrowRightLeft size={20} />
               </div>
               <div>
-                <p className="text-[12px] font-black text-text-main uppercase tracking-tight">Bulk Transfer</p>
-                <p className="text-[9px] font-bold text-text-muted uppercase">Fleet Migration Engine</p>
+                <p className="text-[12px] font-black text-slate-900 uppercase tracking-tight">Bulk Transfer</p>
+                <p className="text-[9px] font-bold text-slate-500 uppercase">Fleet Migration Engine</p>
               </div>
             </div>
-            <ArrowUpRight size={18} className="text-text-muted group-hover:text-primary" />
+            <ArrowUpRight size={18} className="text-slate-400 group-hover:text-primary" />
           </div>
 
-          <div className="bg-white rounded-2xl p-6 border border-border-main flex items-center justify-between group cursor-pointer hover:border-primary/40 hover:-translate-y-1 transition-all">
+          <div className="bg-white rounded-2xl p-6 border border-slate-200 flex items-center justify-between group cursor-pointer hover:border-primary/40 hover:-translate-y-1 transition-all">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-all shadow-sm">
                  <Package size={20} />
               </div>
               <div>
-                <p className="text-[12px] font-black text-text-main uppercase tracking-tight">Catalog Sync</p>
-                <p className="text-[9px] font-bold text-text-muted uppercase">Commercial Deployment</p>
+                <p className="text-[12px] font-black text-slate-900 uppercase tracking-tight">Catalog Sync</p>
+                <p className="text-[9px] font-bold text-slate-500 uppercase">Commercial Deployment</p>
               </div>
             </div>
-            <ArrowUpRight size={18} className="text-text-muted group-hover:text-purple-600" />
+            <ArrowUpRight size={18} className="text-slate-400 group-hover:text-purple-600" />
           </div>
 
-          <div className="bg-white rounded-2xl p-6 border border-border-main flex items-center justify-between group cursor-pointer hover:border-primary/40 hover:-translate-y-1 transition-all">
+          <div className="bg-white rounded-2xl p-6 border border-slate-200 flex items-center justify-between group cursor-pointer hover:border-primary/40 hover:-translate-y-1 transition-all">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-all shadow-sm">
                  <Settings size={20} />
               </div>
               <div>
-                <p className="text-[12px] font-black text-text-main uppercase tracking-tight">Node Config</p>
-                <p className="text-[9px] font-bold text-text-muted uppercase">Station Protocol Opts</p>
+                <p className="text-[12px] font-black text-slate-900 uppercase tracking-tight">Node Config</p>
+                <p className="text-[9px] font-bold text-slate-500 uppercase">Station Protocol Opts</p>
               </div>
             </div>
-            <ArrowUpRight size={18} className="text-text-muted group-hover:text-amber-600" />
+            <ArrowUpRight size={18} className="text-slate-400 group-hover:text-amber-600" />
           </div>
 
           <div className="bg-white shadow-xl shadow-primary/10 border-2 border-primary/20 rounded-2xl p-6 flex items-center justify-between group cursor-pointer hover:bg-primary hover:text-white transition-all overflow-hidden relative">
@@ -503,8 +503,8 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
                  <Plus size={24} />
                </div>
                <div>
-                  <p className="text-[12px] font-black uppercase tracking-tight">Onboard Client</p>
-                  <p className="text-[9px] font-black group-hover:text-white/60 uppercase">Manual Entry Mode</p>
+                  <p className="text-[12px] font-black uppercase tracking-tight text-slate-900 group-hover:text-white">Onboard Client</p>
+                  <p className="text-[9px] font-black text-slate-500 group-hover:text-white/60 uppercase">Manual Entry Mode</p>
                </div>
              </div>
              <ChevronRight size={20} className="relative z-10" />
@@ -535,14 +535,14 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
                   { id: 'AL-003', company: 'Rodriguez Media Group', companyId: 'ACC-110293', type: 'Payment Method Expiring', severity: 'CRITICAL' },
                   { id: 'AL-004', company: 'Chen Logistics & Supply', companyId: 'ACC-552109', type: 'Regional Outage', severity: 'IMMEDIATE' }
                 ].map((alert) => (
-                  <div key={alert.id} className="p-4 bg-bg-app border border-border-main rounded-2xl hover:border-red-600/20 transition-all cursor-pointer">
+                  <div key={alert.id} className="p-4 bg-slate-50 border border-slate-200 rounded-2xl hover:border-red-600/20 transition-all cursor-pointer">
                     <div className="flex items-center justify-between mb-2">
                        <span className="text-[10px] font-black text-primary uppercase tracking-widest">{alert.company}</span>
                        <span className={cn("px-2 py-0.5 rounded text-[8px] font-black uppercase tracking-tighter", alert.severity === 'CRITICAL' || alert.severity === 'IMMEDIATE' ? "bg-red-100 text-red-600" : "bg-amber-100 text-amber-700")}>{alert.severity}</span>
                     </div>
-                    <h3 className="font-bold text-[14px] text-text-main mb-1">{alert.type}</h3>
-                    <div className="mt-3 pt-3 border-t border-border-main flex items-center justify-between">
-                       <span className="text-[9px] font-bold text-text-muted uppercase tracking-widest">Case ID: {alert.id}</span>
+                    <h3 className="font-bold text-[14px] text-slate-900 mb-1">{alert.type}</h3>
+                    <div className="mt-3 pt-3 border-t border-slate-200 flex items-center justify-between">
+                       <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">Case ID: {alert.id}</span>
                        <button 
                          onClick={(e) => {
                            e.stopPropagation();
@@ -557,8 +557,8 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
                   </div>
                 ))}
               </div>
-              <div className="p-4 bg-bg-app border-t border-border-main text-center">
-                 <button onClick={() => setShowAlerts(false)} className="text-[11px] font-black text-text-muted hover:text-text-main uppercase tracking-widest">Acknowledge All</button>
+              <div className="p-4 bg-slate-50 border-t border-slate-200 text-center">
+                 <button onClick={() => setShowAlerts(false)} className="text-[11px] font-black text-slate-500 hover:text-slate-900 uppercase tracking-widest">Acknowledge All</button>
               </div>
             </motion.div>
           </div>
