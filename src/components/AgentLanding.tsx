@@ -195,7 +195,6 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
                   </div>
                   <div>
                     <h3 className="text-[18px] font-black text-slate-900 tracking-tight uppercase">Portfolio Intelligence</h3>
-                    <p className="text-[11px] font-bold text-slate-500 uppercase tracking-widest">Global Ecosystem Performance • Q2 2024</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full border border-slate-200">

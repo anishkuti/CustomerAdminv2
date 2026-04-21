@@ -7,17 +7,24 @@ interface LoginProps {
 }
 
 export default function Login({ onLogin }: LoginProps) {
-  const [email, setEmail] = useState('');
+  const [userid, setUserid] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate API call
+    setError(null);
+
+    // Simulate API call with credentials check
     setTimeout(() => {
       setIsLoading(false);
-      onLogin();
+      if (userid === 'demo' && password === 'demo') {
+        onLogin();
+      } else {
+        setError('Invalid User ID or password matching the enterprise directory.');
+      }
     }, 800);
   };
 
@@ -34,22 +41,32 @@ export default function Login({ onLogin }: LoginProps) {
             <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center text-white shadow-lg shadow-primary/20 mb-6 rotate-3 hover:rotate-0 transition-transform duration-300">
               <Smartphone size={32} />
             </div>
-            <h1 className="text-2xl font-black text-slate-900 tracking-tighter text-center">
-              TELCO<span className="text-primary">CONNECT</span>
+            <h1 className="text-2xl font-black text-slate-900 tracking-tighter text-center uppercase">
+              B2B<span className="text-primary italic">Selfcare</span>
             </h1>
-            <p className="text-[12px] text-slate-500 font-bold uppercase tracking-widest mt-2">B2B Selfcare Portal</p>
+            <p className="text-[12px] text-slate-500 font-bold uppercase tracking-widest mt-2">Enterprise Access Gateway</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            {error && (
+              <motion.div 
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="p-4 bg-red-50 border border-red-100 rounded-xl text-red-600 text-[11px] font-black uppercase tracking-widest text-center"
+              >
+                {error}
+              </motion.div>
+            )}
+
             <div className="space-y-2">
-              <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">User Credentials</label>
+              <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider ml-1">Terminal User ID</label>
               <div className="relative group">
                 <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 group-focus-within:text-primary transition-colors" />
                 <input 
                   type="text" 
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="email.id@telcoconnect.com"
+                  value={userid}
+                  onChange={(e) => setUserid(e.target.value)}
+                  placeholder="DEMO"
                   className="w-full bg-white border border-slate-200 rounded-xl px-10 py-3 text-[14px] outline-none focus:ring-4 focus:ring-primary/5 focus:border-primary transition-all font-medium"
                   required
                 />
@@ -58,7 +75,7 @@ export default function Login({ onLogin }: LoginProps) {
 
             <div className="space-y-2">
               <div className="flex justify-between items-center ml-1">
-                <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Access Token</label>
+                <label className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Access Token / Password</label>
                 <button type="button" className="text-[10px] font-bold text-primary hover:underline uppercase">Forgot Key?</button>
               </div>
               <div className="relative group">
