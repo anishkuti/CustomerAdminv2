@@ -33,7 +33,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from './lib/utils';
-import { useCustomer } from './context/CustomerContext';
+import { useCustomer, CustomerProvider } from './context/CustomerContext';
 import Overview from './components/Overview';
 import Subscriptions from './components/ManageLines';
 import BillingAndPayments from './components/BillingAndPayments';
@@ -46,9 +46,12 @@ import ContractModal from './components/ContractModal';
 
 type TabType = 'overview' | 'lines' | 'billing' | 'service-request' | 'order' | 'offerings' | 'preferences' | 'contracts';
 
-export default function App() {
+interface DashboardProps {
+  onLogout: () => void;
+}
+
+function Dashboard({ onLogout }: DashboardProps) {
   const { currentCustomer, allCustomers, setCustomer, offerings } = useCustomer();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [activeTab, setActiveTab] = useState<TabType>('overview');
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
@@ -74,12 +77,8 @@ export default function App() {
         c.id.toLowerCase().includes(searchQuery.toLowerCase())
       );
 
-  if (!isAuthenticated) {
-    return <Login onLogin={() => setIsAuthenticated(true)} />;
-  }
-
   if (!currentCustomer) {
-    return <AgentLanding onLogout={() => setIsAuthenticated(false)} />;
+    return <AgentLanding onLogout={onLogout} />;
   }
 
   return (
@@ -197,7 +196,7 @@ export default function App() {
 
           <div className="p-4 border-t border-border-main mt-auto space-y-3">
             <button 
-              onClick={() => setIsAuthenticated(false)}
+              onClick={onLogout}
               className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-[14px] font-black text-text-muted hover:text-red-600 hover:bg-red-50 transition-all"
             >
               <Trash2 size={20} />
@@ -371,5 +370,19 @@ export default function App() {
         )}
       </AnimatePresence>
     </div>
+  );
+}
+
+export default function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  return (
+    <CustomerProvider>
+      {isAuthenticated ? (
+        <Dashboard onLogout={() => setIsAuthenticated(false)} />
+      ) : (
+        <Login onLogin={() => setIsAuthenticated(true)} />
+      )}
+    </CustomerProvider>
   );
 }
