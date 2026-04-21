@@ -8,10 +8,21 @@ View your app in AI Studio: [https://ai.studio/apps/339525ce-6c70-4734-8da3-a831
    ```bash
    npm install
    ```
-2. **Run the app:**
+
+2. **Development mode:**
+   Starts the Express server with Vite middleware for HR and fast development.
    ```bash
    npm run dev
    ```
+
+3. **Production mode (deployment to EC2/Cloud):**
+   First, build the optimized frontend assets, then start the Node.js server.
+   ```bash
+   npm run build
+   npm start
+   ```
+
+> **Deployment Note:** The server is configured to listen on port `3000` and host `0.0.0.0`. Ensure your server's firewall/security group allows inbound traffic on port 3000.
 
 A professional, enterprise-grade portal designed for telecommunications administrators to manage B2B customer accounts, network health, and financial operations.
 

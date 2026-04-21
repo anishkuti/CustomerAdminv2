@@ -17,7 +17,6 @@ import {
   MessageSquare,
   User,
   History as HistoryIcon,
-  Sparkles,
   Zap,
   ShieldAlert,
   Globe,
