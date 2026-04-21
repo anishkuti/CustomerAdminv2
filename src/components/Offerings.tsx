@@ -109,22 +109,30 @@ export default function Offerings() {
       </div>
 
       {/* Featured Banner */}
-      <div className="bg-text-main rounded-lg p-8 text-white relative overflow-hidden group">
-         <div className="relative z-10 max-w-lg">
-            <span className="inline-block px-2 py-0.5 bg-primary text-white text-[10px] font-bold rounded mb-4 uppercase tracking-widest">Limited Time Offer</span>
-            <h3 className="text-2xl font-extrabold mb-3 tracking-tight">Q2 Business Expansion Pack</h3>
-            <p className="text-white/70 text-[14px] leading-relaxed mb-6 font-medium">
+      <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-[2rem] p-8 lg:p-12 text-white relative overflow-hidden group shadow-xl border border-white/5">
+         <div className="relative z-10 max-w-xl">
+            <div className="flex items-center gap-2 mb-6">
+              <span className="px-3 py-1 bg-primary text-white text-[10px] font-black rounded-full uppercase tracking-[0.2em] shadow-lg shadow-primary/20">Special Enterprise Program</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            </div>
+            <h3 className="text-3xl lg:text-4xl font-black mb-4 tracking-tighter leading-none">Q2 Business Expansion Pack</h3>
+            <p className="text-slate-300 text-[15px] leading-relaxed mb-8 font-medium">
               Upgrade 10+ lines to our Enterprise Unlimited Pro plan and get a dedicated fibre circuit installed at your headquarters with 3 months free.
             </p>
-            <button className="px-6 py-3 bg-white text-text-main font-bold rounded-md hover:bg-opacity-90 transition-all flex items-center gap-2 group/btn">
-              Talk to Account Manager <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-            </button>
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <button className="w-full sm:w-auto px-8 py-4 bg-white text-slate-900 font-bold rounded-2xl hover:bg-slate-100 active:scale-[0.98] transition-all flex items-center justify-center gap-2 group/btn shadow-lg">
+                Talk to Account Manager <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+              </button>
+              <button className="w-full sm:w-auto px-8 py-4 bg-white/10 text-white font-bold rounded-2xl hover:bg-white/20 transition-all border border-white/10">
+                View Terms
+              </button>
+            </div>
          </div>
 
          {/* Decorative elements */}
-         <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[100px] -mr-32 -mt-32 rounded-full group-hover:bg-primary/30 transition-colors"></div>
-         <div className="absolute bottom-0 right-0 opacity-10 p-8 transform rotate-12 group-hover:rotate-0 transition-transform">
-            <Zap size={160} strokeWidth={1} />
+         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 blur-[120px] -mr-48 -mt-48 rounded-full group-hover:bg-primary/20 transition-all duration-700"></div>
+         <div className="absolute bottom-0 right-0 opacity-[0.03] p-12 transform rotate-12 group-hover:rotate-0 transition-transform duration-700">
+            <Zap size={240} strokeWidth={1} />
          </div>
       </div>
 

@@ -290,72 +290,91 @@ function Dashboard({ onLogout }: DashboardProps) {
 
           {/* Right Panel: Context & Insights */}
           {isRightPanelOpen && (
-            <section className="bg-white p-6 hidden xl:flex flex-col overflow-y-auto thin-scrollbar divide-y divide-slate-200/50">
-              <div className="pb-8">
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em]">Priority System Alerts</h3>
-                <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
-              </div>
+            <section className="bg-slate-50 border-l border-slate-200 p-8 hidden xl:flex flex-col overflow-y-auto thin-scrollbar relative shadow-[-20px_0_40px_rgba(0,0,0,0.02)]">
+               <div className="flex items-center justify-between mb-12">
+                 <h2 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em]">Context Intelligence</h2>
+                 <div className="flex items-center gap-2 px-3 py-1 bg-emerald-50 rounded-full border border-emerald-100">
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                    <span className="text-[9px] font-black text-emerald-700 uppercase tracking-widest">Active Analyser</span>
+                 </div>
+               </div>
+
+               <div className="space-y-12 pb-8">
+                 {/* Priority System Alerts */}
+                 <div>
+                   <div className="flex items-center justify-between mb-6">
+                     <div className="flex items-center gap-2">
+                       <ShieldAlert className="text-red-500" size={16} />
+                       <h3 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em]">Priority Alerts</h3>
+                     </div>
+                   </div>
               
               <div className="space-y-3">
                 {[
                   { title: 'Data Limit Threshold', desc: 'Line +44 7700 900456 over 95%', severity: 'high', icon: ShieldAlert },
                   { title: 'Billing Discrepancy', desc: 'Mismatched MRR for SKU: BDL-492', severity: 'medium', icon: AlertCircle },
-                  { title: 'Network Latency', desc: 'Regional node spiking in IRL-Dublin', severity: 'low', icon: Globe },
-                ].map((alert, i) => (
-                  <div key={i} className="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:border-primary/30 transition-all cursor-pointer group">
-                    <div className="flex items-center gap-3 mb-1.5">
-                      <alert.icon size={14} className={cn(
-                        alert.severity === 'high' ? "text-red-600" : 
-                        alert.severity === 'medium' ? "text-amber-500" : "text-blue-500"
-                      )} />
-                      <span className="text-[12px] font-black text-slate-900 group-hover:text-primary transition-colors">{alert.title}</span>
-                    </div>
-                    <p className="text-[11px] text-slate-500 font-bold leading-tight pl-6">{alert.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+                     { title: 'Network Latency', desc: 'Regional node spiking in IRL-Dublin', severity: 'low', icon: Globe },
+                   ].map((alert, i) => (
+                     <div key={i} className="p-4 rounded-xl border border-slate-200 bg-white shadow-sm hover:border-primary/30 transition-all cursor-pointer group">
+                       <div className="flex items-center gap-3 mb-2">
+                         <alert.icon size={14} className={cn(
+                           alert.severity === 'high' ? "text-red-600" : 
+                           alert.severity === 'medium' ? "text-amber-500" : "text-blue-500"
+                         )} />
+                         <span className="text-[12px] font-black text-slate-900 group-hover:text-primary transition-colors">{alert.title}</span>
+                       </div>
+                       <p className="text-[11px] text-slate-500 font-bold leading-tight">{alert.desc}</p>
+                     </div>
+                   ))}
+                 </div>
+               </div>
 
-            <div className="pt-8 pb-8">
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em]">Quick Metrics</h3>
-                <span className="px-2 py-0.5 bg-emerald-50 text-emerald-600 rounded text-[9px] font-black border border-emerald-100">STABLE</span>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                   <p className="text-[10px] font-black text-slate-500 uppercase mb-1">Utilization</p>
-                   <p className="text-lg font-black text-slate-900">84%</p>
-                </div>
-                <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200">
-                   <p className="text-[10px] font-black text-slate-500 uppercase mb-1">Active SIMs</p>
-                   <p className="text-lg font-black text-slate-900">{currentCustomer.activeLines}</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="pt-8">
-               <div className="flex items-center gap-2 mb-4">
-                 <Lightbulb className="text-amber-500" size={16} />
-                 <h3 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em]">Recommendations</h3>
-               </div>
-               <div className="space-y-3">
-                 {offerings.slice(0, 2).map((o) => (
-                   <div 
-                    key={o.id} 
-                    onClick={() => setActiveTab('offerings')}
-                    className="p-4 rounded-2xl border border-slate-200 bg-white hover:border-primary/40 transition-all cursor-pointer group"
-                   >
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-[10px] font-black text-primary uppercase">{o.id}</span>
-                        <ArrowUpRight size={14} className="text-slate-500 group-hover:text-primary transition-colors" />
-                      </div>
-                      <p className="text-[13px] font-black text-slate-900 leading-tight mb-1">{o.title}</p>
-                      <p className="text-[11px] text-slate-500 font-bold leading-relaxed">{o.benefit}</p>
+               <div>
+                 <div className="flex items-center justify-between mb-6">
+                   <h3 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em]">Operational Health</h3>
+                   <span className="px-2 py-0.5 bg-emerald-50 text-emerald-600 rounded text-[9px] font-black border border-emerald-100 uppercase tracking-widest">Stable</span>
+                 </div>
+                 <div className="grid grid-cols-2 gap-4">
+                   <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                      <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Utilization</p>
+                      <p className="text-2xl font-black text-slate-900">84%</p>
                    </div>
-                 ))}
+                   <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                      <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Active SIMs</p>
+                      <p className="text-2xl font-black text-slate-900">{currentCustomer.activeLines}</p>
+                   </div>
+                 </div>
                </div>
-            </div>
+            
+                 {/* Recommendations */}
+                 <div>
+                    <div className="flex items-center gap-2 mb-6">
+                      <Lightbulb className="text-amber-500" size={16} />
+                      <h3 className="text-[11px] font-black text-slate-500 uppercase tracking-[0.2em]">Growth Options</h3>
+                    </div>
+                    <div className="space-y-4">
+                      {offerings.slice(0, 2).map((o) => (
+                        <div 
+                         key={o.id} 
+                         onClick={() => setActiveTab('offerings')}
+                         className="p-5 rounded-[2rem] border border-slate-200 bg-white hover:border-primary/40 transition-all cursor-pointer group shadow-sm hover:shadow-lg relative overflow-hidden"
+                        >
+                           <div className="flex items-center justify-between mb-3 relative z-10">
+                             <span className="text-[9px] font-black px-2 py-0.5 bg-primary/10 text-primary rounded-full uppercase tracking-widest">{o.id}</span>
+                             <div className="w-8 h-8 rounded-full border border-slate-100 flex items-center justify-center group-hover:bg-primary/5 transition-colors">
+                               <ArrowUpRight size={14} className="text-slate-400 group-hover:text-primary transition-all" />
+                             </div>
+                           </div>
+                           <p className="text-[15px] font-black text-slate-900 leading-tight mb-2 relative z-10">{o.title}</p>
+                           <p className="text-[11px] text-slate-500 font-medium leading-relaxed relative z-10">{o.benefit}</p>
+                           <div className="absolute right-[-10px] bottom-[-10px] opacity-[0.03] group-hover:opacity-[0.06] transition-opacity">
+                              <Zap size={60} />
+                           </div>
+                        </div>
+                      ))}
+                    </div>
+                 </div>
+               </div>
             </section>
           )}
         </main>

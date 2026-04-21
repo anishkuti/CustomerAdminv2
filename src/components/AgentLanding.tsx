@@ -175,7 +175,7 @@ export default function AgentLanding({ onLogout }: { onLogout?: () => void }) {
         
         {/* Identity & Security Tile (Top Left) */}
         <div className="lg:col-span-3">
-          <div className="bg-slate-900 rounded-[2rem] p-8 h-full text-white shadow-xl relative overflow-hidden group border border-white/5">
+          <div className="bg-slate-800 rounded-[2rem] p-8 h-full text-white shadow-xl relative overflow-hidden group border border-white/5">
             <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:scale-110 transition-transform">
               <ShieldCheck size={100} />
             </div>
