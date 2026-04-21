@@ -26,7 +26,7 @@ import { useCustomer } from '../context/CustomerContext';
 import { cn } from '../lib/utils';
 import { Subscription } from '../types';
 import AddSubscription from './AddSubscription';
-import BulkOrder from './BulkOrder';
+import BulkActions from './BulkActions';
 
 export default function ManageLines() {
   const { subscriptions } = useCustomer();
@@ -68,7 +68,7 @@ export default function ManageLines() {
   }
 
   if (view === 'Bulk') {
-    return <BulkOrder onClose={() => setView('List')} onSuccess={() => setView('List')} />;
+    return <BulkActions onClose={() => setView('List')} onSuccess={() => setView('List')} />;
   }
 
   if (selectedLine) {
@@ -440,8 +440,8 @@ export default function ManageLines() {
             onClick={() => setView('Bulk')}
             className="px-3 py-1.5 bg-white border border-primary text-primary text-[11px] font-bold rounded-md hover:bg-primary-light transition-all flex items-center gap-2 whitespace-nowrap"
           >
-            <Plus className="w-3.5 h-3.5" />
-            Bulk Add
+            <Settings2 className="w-3.5 h-3.5" />
+            Bulk Action
           </button>
           <button 
             onClick={() => setView('Add')}

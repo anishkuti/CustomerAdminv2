@@ -15,7 +15,8 @@ import { useCustomer } from '../context/CustomerContext';
 import { cn } from '../lib/utils';
 import { ServiceRequest, Order } from '../types';
 import AddSubscription from './AddSubscription';
-import BulkOrder from './BulkOrder';
+import BulkActions from './BulkActions';
+import SupportAssistant from './SupportAssistant';
 
 interface ServiceRequestsAndOrdersProps {
   initialTab?: 'Requests' | 'Orders';
@@ -82,7 +83,12 @@ export default function ServiceRequestsAndOrders({ initialTab = 'Requests', hide
   };
 
   if (view === 'Add') {
-    return <AddSubscription onClose={() => setView('List')} onSuccess={() => setView('List')} />;
+    return (
+      <>
+        <AddSubscription onClose={() => setView('List')} onSuccess={() => setView('List')} />
+        <SupportAssistant />
+      </>
+    );
   }
 
   return (
@@ -403,6 +409,7 @@ export default function ServiceRequestsAndOrders({ initialTab = 'Requests', hide
         <button className="px-4 py-2 bg-primary text-white text-[12px] font-bold rounded-md hover:bg-opacity-90 transition-all shadow-sm">
           Connect to Specialist
         </button>
+        <SupportAssistant />
       </div>
     </div>
   );
