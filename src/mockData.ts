@@ -256,8 +256,8 @@ export const mockCustomerData: Record<string, {
     offerings: [
       {
         id: 'OFF-001',
-        title: 'Enterprise AI Security Suite',
-        description: 'Advanced threat protection and AI-driven behavior analysis for all corporate lines.',
+        title: 'Enterprise Cyber Security Suite',
+        description: 'Advanced threat protection and behavioral analysis for all corporate lines.',
         category: 'Security',
         price: '£4.99/line/mo',
         benefit: 'Reduce security breaches by up to 85%',

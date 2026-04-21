@@ -4,7 +4,7 @@ import {
   ShieldAlert, 
   Globe, 
   MessageSquare,
-  Sparkles,
+  Lightbulb as LightbulbIcon,
   ChevronRight,
   ArrowRight,
   CheckCircle2,
@@ -36,7 +36,7 @@ export default function Offerings() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-[17px] font-extrabold text-text-main">Exclusive Offerings</h2>
-          <p className="text-[12px] text-text-muted font-medium">Personalized upsell opportunities and new products for your business.</p>
+          <p className="text-[12px] text-text-muted font-medium">Personalized opportunities and new products for your business.</p>
         </div>
         <div className="flex items-center gap-2">
            <span className="text-[11px] font-bold text-primary bg-primary-light px-2 py-0.5 rounded border border-primary/10 uppercase tracking-tighter">
@@ -47,7 +47,7 @@ export default function Offerings() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {offerings.map((offering, idx) => {
-          const Icon = IconMap[offering.icon] || Sparkles;
+          const Icon = IconMap[offering.icon] || LightbulbIcon;
           return (
             <motion.div
               layout

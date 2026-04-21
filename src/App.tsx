@@ -29,7 +29,8 @@ import {
   ChevronDown,
   FileText,
   PanelRightClose,
-  PanelRight
+  PanelRight,
+  Lightbulb
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from './lib/utils';
@@ -62,7 +63,7 @@ export default function App() {
     { id: 'contracts', label: 'Contracts', icon: FileText },
     { id: 'order', label: 'Orders', icon: Package },
     { id: 'service-request', label: 'Service Requests', icon: MessageSquare },
-    { id: 'offerings', label: 'Offerings', icon: Sparkles },
+    { id: 'offerings', label: 'Offerings', icon: Lightbulb },
     { id: 'preferences', label: 'Settings', icon: Settings2 },
   ];
 
@@ -337,7 +338,7 @@ export default function App() {
             
             <div className="pt-8">
                <div className="flex items-center gap-2 mb-4">
-                 <Sparkles className="text-amber-500" size={16} />
+                 <Lightbulb className="text-amber-500" size={16} />
                  <h3 className="text-[11px] font-black text-text-muted uppercase tracking-[0.2em]">Recommendations</h3>
                </div>
                <div className="space-y-3">
